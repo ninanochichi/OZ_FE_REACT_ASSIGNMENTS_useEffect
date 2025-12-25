@@ -23,20 +23,24 @@ function Counter() {
   // 1. 컴포넌트가 최초 렌더링 되는 경우에 실행되는 useEffect 함수를 구현하세요. (마운트)
   useEffect(() => {
     console.log("컴포넌트가 마운트됨!");
-  });
+  }, []);
 
   // 2. 컴포넌트가 리렌더링 되는 경우에 실행되는 useEffect 함수를 구현하세요. (업데이트)
   useEffect(() => {
-    console.log("리렌더링됨!");
+    console.log("컴포넌트 렌더링됨!");
   });
 
   // 3. counter2 값이 변경되는 경우에 실행되는 useEffect 함수를 구현하세요. (특정 값 업데이트)
   useEffect(() => {
     console.log("counter2 값이 변경됨");
-  });
+  }, [counter2]);
 
   // 4. 클린업 함수를 작성하세요. (언마운트)
-  useEffect(() => {});
+  useEffect(() => {
+    return () => {
+      console.log("❌ 컴포넌트 언마운트됨 (cleanup)");
+    };
+  }, []);
 
   return (
     <section>
